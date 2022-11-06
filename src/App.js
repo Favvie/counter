@@ -12,15 +12,15 @@ export default function App() {
   };
   return (
     <div>
-      <button onClick={increment}>increment</button>
+      {/* <button onClick={increment}>increment</button>
       <p>{count}</p>
       <button onClick={decrement}>decrement</button>
       <button onClick={reset}>reset</button>
       <form action="">
         <input type="text" ref={inputEl} />
         <button onClick={addValue}>set Value</button>
-      </form>
-      {/* <ReducerCounter /> */}
+      </form> */}
+      <ReducerCounter />
     </div>
   );
 }

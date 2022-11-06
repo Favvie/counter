@@ -11,7 +11,7 @@ const ReducerCounter = () => {
       case 'reset':
         return { count: 0 };
       case 'setvalue':
-        return { count: Number(inputEl.current.value) };
+        return { ...state, count: Number(action.payload) };
       default:
         return state;
     }
@@ -20,28 +20,22 @@ const ReducerCounter = () => {
 
   const inputEl = useRef();
 
-  // const [count, setCount] = useState(0);
   function increment() {
     dispatch({ type: 'increment' });
   }
   function decrement() {
-    // setCount((pcount) => pcount - 1);
     dispatch({ type: 'decrement' });
   }
   function reset() {
-    // setCount(0);
     dispatch({ type: 'reset' });
   }
   function setValue(e) {
-    // setCount(value);
     e.preventDefault();
-    // dispatch({ type: 'setvalue' });
+    let inputFieldData = inputEl.current.value;
+    dispatch({ type: 'setvalue', payload: inputFieldData });
+    inputEl.current.value = '';
   }
 
-  // const addValue = (e) => {
-  //   e.preventDefault();
-  //   setValue(Number(inputEl.current.value));
-  // };
   return (
     <div>
       <h1>useReducer page</h1>
@@ -50,7 +44,7 @@ const ReducerCounter = () => {
       <button onClick={decrement}>decrement</button>
       <button onClick={reset}>reset</button>
       <form action="">
-        <input type="text" ref={inputEl} />
+        <input type="text" ref={inputEl} name="countInput" />
         <button onClick={setValue}>set Value</button>
       </form>
     </div>
